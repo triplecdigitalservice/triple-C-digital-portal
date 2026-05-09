@@ -148,41 +148,42 @@ business_size = st.selectbox(
 # Pricing
 pricing = {
     "Brand New Website": {
-        "Just Me (Solo)": 800,
-        "Small (2-10 employees)": 1500,
-        "Medium (11-50 employees)": 2500
+        "Just Me (Solo)": 400,
+        "Small (2-10 employees)": 750,
+        "Medium (11-50 employees)": 1250
     },
     "Website Redesign": {
-        "Just Me (Solo)": 600,
-        "Small (2-10 employees)": 1200,
-        "Medium (11-50 employees)": 2000
+        "Just Me (Solo)": 300,
+        "Small (2-10 employees)": 600,
+        "Medium (11-50 employees)": 1000
     },
     "Website Maintenance — Monthly": {
-        "Just Me (Solo)": 150,
-        "Small (2-10 employees)": 250,
-        "Medium (11-50 employees)": 400
+        "Just Me (Solo)": 75,
+        "Small (2-10 employees)": 125,
+        "Medium (11-50 employees)": 200
     },
     "Mobile App Development": {
-        "Just Me (Solo)": 2000,
-        "Small (2-10 employees)": 3500,
-        "Medium (11-50 employees)": 6000
+        "Just Me (Solo)": 1000,
+        "Small (2-10 employees)": 1750,
+        "Medium (11-50 employees)": 3000
     },
     "Business Automation": {
-        "Just Me (Solo)": 500,
-        "Small (2-10 employees)": 1000,
-        "Medium (11-50 employees)": 2000
+        "Just Me (Solo)": 250,
+        "Small (2-10 employees)": 500,
+        "Medium (11-50 employees)": 1000
     },
     "Data Analysis and Reporting": {
-        "Just Me (Solo)": 400,
-        "Small (2-10 employees)": 800,
-        "Medium (11-50 employees)": 1500
+        "Just Me (Solo)": 200,
+        "Small (2-10 employees)": 400,
+        "Medium (11-50 employees)": 750
     },
     "Full Tech Package — Best Value": {
-        "Just Me (Solo)": 2500,
-        "Small (2-10 employees)": 4500,
-        "Medium (11-50 employees)": 8000
+        "Just Me (Solo)": 1250,
+        "Small (2-10 employees)": 2250,
+        "Medium (11-50 employees)": 4000
     },
 }
+
 
 # Live quote display
 if service != "Select a service..." and business_size != "Select size...":
