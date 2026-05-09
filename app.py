@@ -60,10 +60,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Logo and Header
-st.image(
-    "https://raw.githubusercontent.com/triplecdigitalservice/triple-c-digital-portal/main/IMG_3184.png",
-    width=250
-)
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image(
+        "https://raw.githubusercontent.com/triplecdigitalservice/triple-c-digital-portal/main/IMG_3184.png",
+        width=250
+    )
+
 
 st.markdown("""
 <div style='text-align: center; margin-bottom: 10px;'>
