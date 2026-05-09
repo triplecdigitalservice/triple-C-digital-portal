@@ -1,4 +1,6 @@
 import streamlit as st
+import requests
+
 
 # Page config
 st.set_page_config(
