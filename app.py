@@ -257,22 +257,45 @@ if st.button("Submit My Free Quote Request"):
         st.error("⚠️ Please confirm you understand the pricing is an estimate.")
     else:
         price_display = f"${pricing[service][business_size]:,}" if business_size != "Select size..." else "TBD in consultation"
-        st.success(f"""
-        ✅ Thank you, {contact_name}! Your request has been received.
 
-        **Here's your summary:**
-        - 🏢 Business: {business_name}
-        - 🛠️ Service: {service}
-        - 💰 Estimated Investment: {price_display}
-        - ⏱️ Timeline: {timeline}
+        formspree_data = {
+            "Business Name": business_name,
+            "Contact Name": contact_name,
+            "Email": contact_email,
+            "Phone": contact_phone,
+            "Business Type": business_type,
+            "Service Requested": service,
+            "Business Size": business_size,
+            "Estimated Price": price_display,
+            "Project Details": project_details,
+            "Timeline": timeline,
+            "How They Found Us": how_found
+        }
 
-        **What happens next:**
-        Triple C Digital will reach out to {contact_email} within 24 hours 
-        to schedule your free consultation.
+        response = requests.post(
+            "https://formspree.io/f/xgodpwed",
+            data=formspree_data
+        )
 
-        We look forward to working with you!
-        """)
-        st.balloons()
+        if response.status_code == 200:
+            st.success(f"""
+            ✅ Thank you, {contact_name}! Your request has been received.
+
+            **Here's your summary:**
+            - 🏢 Business: {business_name}
+            - 🛠️ Service: {service}
+            - 💰 Estimated Investment: {price_display}
+            - ⏱️ Timeline: {timeline}
+
+            **What happens next:**
+            Triple C Digital will reach out to {contact_email} within 24 hours
+            to schedule your free consultation.
+
+            We look forward to working with you!
+            """)
+            st.balloons()
+        else:
+            st.error("Something went wrong submitting your request. Please try again.")
 
 # Footer
 st.markdown("""
