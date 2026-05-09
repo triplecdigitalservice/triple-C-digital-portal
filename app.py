@@ -61,7 +61,7 @@ st.markdown("""
 
 # Logo and Header
 st.image(
-    "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/triple-c-digital-portal/main/logo.png",
+    "https://raw.githubusercontent.com/triplecdigitalservice/triple-c-digital-portal/main/image_3184.png",
     width=250
 )
 
