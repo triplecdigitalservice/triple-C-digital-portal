@@ -7,36 +7,116 @@ st.set_page_config(
     layout="centered"
 )
 
-# Header
-st.title("💻 Triple C Digital")
-st.subheader("Modern Technology Solutions for Small Businesses")
-st.markdown("---")
-
-# About section
+# Custom CSS for red and black branding
 st.markdown("""
-### Welcome
-At Triple C Digital we help small local businesses grow through 
-modern, affordable technology. Whether you need a website, app, 
-or smarter systems — we handle everything in plain English.
-No confusing tech talk. No runaround. No surprises.
+    <style>
+    .main {
+        background-color: #ffffff;
+    }
+    .stButton>button {
+        background-color: #cc0000;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        width: 100%;
+    }
+    .stButton>button:hover {
+        background-color: #990000;
+        color: white;
+    }
+    h1, h2, h3 {
+        color: #1a1a1a;
+    }
+    .header-bar {
+        background-color: #cc0000;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .footer {
+        text-align: center;
+        color: #888888;
+        font-size: 13px;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px solid #cc0000;
+    }
+    .quote-box {
+        background-color: #f9f9f9;
+        border-left: 5px solid #cc0000;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+    .section-divider {
+        border-top: 2px solid #cc0000;
+        margin: 25px 0;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Logo and Header
+st.image(
+    "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/triple-c-digital-portal/main/logo.png",
+    width=250
+)
+
+st.markdown("""
+<div style='text-align: center; margin-bottom: 10px;'>
+    <h1 style='color: #1a1a1a; font-size: 36px; margin: 0;'>TRIPLE C DIGITAL</h1>
+    <p style='color: #cc0000; font-size: 16px; font-weight: bold; letter-spacing: 3px;'>
+        MODERN TECHNOLOGY FOR SMALL BUSINESS
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
+
+# Value proposition
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.markdown("### ✅ Personal\nOne on one service from someone who actually listens.")
+with col2:
+    st.markdown("### 💰 Affordable\nPricing that makes sense for small business budgets.")
+with col3:
+    st.markdown("### 🗣️ Plain English\nNo confusing tech talk. Ever.")
+
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
+
+# About
+st.markdown("""
+### About Triple C Digital
+We believe outdated technology is one of the biggest hidden costs draining small businesses 
+today. From slow websites that drive customers away to manual processes that eat up your time — 
+we've seen firsthand how the wrong tech holds hardworking business owners back.
+
+**We exist to change that.**
 """)
 
-st.markdown("---")
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
-# Client intake form
-st.header("📋 Request a Free Quote")
-st.write("Fill out the form below and we'll get back to you within 24 hours.")
+# Quote Request Form
+st.markdown("## 📋 Request Your Free Quote")
+st.write("Fill out the form below. We respond within 24 hours — guaranteed.")
 
-business_name = st.text_input("Business Name")
-contact_name = st.text_input("Your Name")
-contact_email = st.text_input("Email Address")
-contact_phone = st.text_input("Phone Number")
-business_type = st.text_input("What does your business do?")
+col1, col2 = st.columns(2)
+with col1:
+    business_name = st.text_input("Business Name *")
+    contact_name = st.text_input("Your Name *")
+with col2:
+    contact_email = st.text_input("Email Address *")
+    contact_phone = st.text_input("Phone Number")
 
-st.markdown("---")
+business_type = st.text_input("What does your business do? *")
 
-# Service selection
-st.header("🛠️ Select Your Service")
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
+
+# Service Selection
+st.markdown("## 🛠️ Select Your Service")
 
 service = st.selectbox(
     "What do you need help with?",
@@ -44,11 +124,11 @@ service = st.selectbox(
         "Select a service...",
         "Brand New Website",
         "Website Redesign",
-        "Website Maintenance",
+        "Website Maintenance — Monthly",
         "Mobile App Development",
         "Business Automation",
         "Data Analysis and Reporting",
-        "Full Tech Package"
+        "Full Tech Package — Best Value"
     ]
 )
 
@@ -62,36 +142,71 @@ business_size = st.selectbox(
     ]
 )
 
-# Pricing logic
+# Pricing
 pricing = {
-    "Brand New Website": {"Just Me (Solo)": 800, "Small (2-10 employees)": 1500, "Medium (11-50 employees)": 2500},
-    "Website Redesign": {"Just Me (Solo)": 600, "Small (2-10 employees)": 1200, "Medium (11-50 employees)": 2000},
-    "Website Maintenance": {"Just Me (Solo)": 150, "Small (2-10 employees)": 250, "Medium (11-50 employees)": 400},
-    "Mobile App Development": {"Just Me (Solo)": 2000, "Small (2-10 employees)": 3500, "Medium (11-50 employees)": 6000},
-    "Business Automation": {"Just Me (Solo)": 500, "Small (2-10 employees)": 1000, "Medium (11-50 employees)": 2000},
-    "Data Analysis and Reporting": {"Just Me (Solo)": 400, "Small (2-10 employees)": 800, "Medium (11-50 employees)": 1500},
-    "Full Tech Package": {"Just Me (Solo)": 2500, "Small (2-10 employees)": 4500, "Medium (11-50 employees)": 8000},
+    "Brand New Website": {
+        "Just Me (Solo)": 800,
+        "Small (2-10 employees)": 1500,
+        "Medium (11-50 employees)": 2500
+    },
+    "Website Redesign": {
+        "Just Me (Solo)": 600,
+        "Small (2-10 employees)": 1200,
+        "Medium (11-50 employees)": 2000
+    },
+    "Website Maintenance — Monthly": {
+        "Just Me (Solo)": 150,
+        "Small (2-10 employees)": 250,
+        "Medium (11-50 employees)": 400
+    },
+    "Mobile App Development": {
+        "Just Me (Solo)": 2000,
+        "Small (2-10 employees)": 3500,
+        "Medium (11-50 employees)": 6000
+    },
+    "Business Automation": {
+        "Just Me (Solo)": 500,
+        "Small (2-10 employees)": 1000,
+        "Medium (11-50 employees)": 2000
+    },
+    "Data Analysis and Reporting": {
+        "Just Me (Solo)": 400,
+        "Small (2-10 employees)": 800,
+        "Medium (11-50 employees)": 1500
+    },
+    "Full Tech Package — Best Value": {
+        "Just Me (Solo)": 2500,
+        "Small (2-10 employees)": 4500,
+        "Medium (11-50 employees)": 8000
+    },
 }
 
-# Show quote
+# Live quote display
 if service != "Select a service..." and business_size != "Select size...":
     price = pricing[service][business_size]
-    st.markdown("---")
-    st.header("💰 Your Estimated Quote")
-    st.success(f"**{service}** for a **{business_size}** business: **${price:,}**")
-    st.caption("Final pricing confirmed after free consultation. No surprises.")
+    st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
+    st.markdown("## 💰 Your Estimated Investment")
+    st.markdown(f"""
+    <div class='quote-box'>
+        <h3 style='color: #cc0000; margin: 0;'>{service}</h3>
+        <p style='font-size: 28px; font-weight: bold; margin: 10px 0;'>${price:,}</p>
+        <p style='color: #666; margin: 0;'>Final pricing confirmed after your free consultation. No surprises. No hidden fees.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-st.markdown("---")
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
-# Additional info
-st.header("📝 Tell Us More")
+# Project details
+st.markdown("## 📝 Tell Us About Your Project")
+
 project_details = st.text_area(
     "Describe your biggest tech challenge or what you want built:",
+    placeholder="Example: I have no website and I'm losing customers to competitors who do. I need something professional that shows what my business does and lets people contact me easily.",
     height=150
 )
 
 timeline = st.selectbox(
-    "When do you need this?",
+    "When do you need this completed?",
     [
         "Select timeline...",
         "As soon as possible",
@@ -101,44 +216,65 @@ timeline = st.selectbox(
     ]
 )
 
-budget_confirmed = st.checkbox(
-    "I understand this is an estimate and final price will be confirmed in consultation"
+how_found = st.selectbox(
+    "How did you hear about Triple C Digital?",
+    [
+        "Select one...",
+        "Nextdoor",
+        "Word of mouth",
+        "Google search",
+        "Social media",
+        "Other"
+    ]
 )
 
-st.markdown("---")
+budget_confirmed = st.checkbox(
+    "✅ I understand this is an estimate and final pricing will be confirmed during my free consultation."
+)
 
-# Submit
-st.header("🚀 Submit Your Request")
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
-if st.button("Submit Quote Request", type="primary"):
+# Submit section
+st.markdown("## 🚀 Submit Your Request")
+st.write("Zero obligation. Zero pressure. Just a conversation about how we can help.")
+
+if st.button("Submit My Free Quote Request"):
     if not business_name:
-        st.error("Please enter your business name.")
+        st.error("⚠️ Please enter your business name.")
+    elif not contact_name:
+        st.error("⚠️ Please enter your name.")
     elif not contact_email:
-        st.error("Please enter your email address.")
+        st.error("⚠️ Please enter your email address.")
     elif service == "Select a service...":
-        st.error("Please select a service.")
+        st.error("⚠️ Please select a service.")
     elif not project_details:
-        st.error("Please describe your project.")
+        st.error("⚠️ Please describe your project.")
+    elif not budget_confirmed:
+        st.error("⚠️ Please confirm you understand the pricing is an estimate.")
     else:
+        price_display = f"${pricing[service][business_size]:,}" if business_size != "Select size..." else "TBD in consultation"
         st.success(f"""
-        ✅ Thank you, {contact_name}!
-        
-        Your quote request has been received. 
-        Triple C Digital will contact you at {contact_email} within 24 hours.
-        
-        Here's your summary:
-        - Business: {business_name}
-        - Service: {service}
-        - Estimated Investment: ${pricing[service][business_size] if business_size != 'Select size...' else 'TBD':,}
+        ✅ Thank you, {contact_name}! Your request has been received.
+
+        **Here's your summary:**
+        - 🏢 Business: {business_name}
+        - 🛠️ Service: {service}
+        - 💰 Estimated Investment: {price_display}
+        - ⏱️ Timeline: {timeline}
+
+        **What happens next:**
+        Triple C Digital will reach out to {contact_email} within 24 hours 
+        to schedule your free consultation.
+
+        We look forward to working with you!
         """)
         st.balloons()
 
-st.markdown("---")
-
 # Footer
 st.markdown("""
-<div style='text-align: center; color: gray;'>
-    <p>Triple C Digital | Modern Tech for Small Business</p>
+<div class='footer'>
+    <p><strong>Triple C Digital</strong></p>
+    <p>Modern Technology Solutions for Small Business</p>
     <p>Professional • Affordable • Trustworthy</p>
 </div>
 """, unsafe_allow_html=True)
